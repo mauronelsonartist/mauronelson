@@ -1,0 +1,427 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
+
+/* Organic Ink Effect Styles for ALL Buttons */
+.ink-effect-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ink-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ink-blob-1,
+.ink-blob-2,
+.ink-blob-3 {
+  position: absolute;
+  background: #000000;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Main central blob */
+.ink-blob-1 {
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 90%;
+  clip-path: polygon(25% 15%, 75% 10%, 85% 30%, 90% 50%, 85% 70%, 75% 85%, 50% 90%, 25% 85%, 15% 70%, 10% 50%, 15% 30%);
+}
+
+/* Left expansion blob */
+.ink-blob-2 {
+  top: 50%;
+  left: 25%;
+  width: 60%;
+  height: 70%;
+  clip-path: polygon(30% 20%, 70% 15%, 85% 35%, 90% 55%, 85% 75%, 60% 90%, 40% 85%, 20% 70%, 15% 50%, 25% 30%);
+}
+
+/* Right expansion blob */
+.ink-blob-3 {
+  top: 50%;
+  left: 75%;
+  width: 60%;
+  height: 70%;
+  clip-path: polygon(40% 15%, 80% 20%, 85% 40%, 90% 60%, 85% 80%, 70% 90%, 50% 85%, 30% 75%, 25% 55%, 30% 35%);
+}
+
+/* Hover state - expand from center outward */
+.ink-effect-btn:hover .ink-effect {
+  opacity: 1;
+}
+
+.ink-effect-btn:hover .ink-blob-1 {
+  transform: translate(-50%, -50%) scale(0.8);
+  transition-delay: 0s;
+}
+
+.ink-effect-btn:hover .ink-blob-2 {
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.1s;
+}
+
+.ink-effect-btn:hover .ink-blob-3 {
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.1s;
+}
+
+/* Reverse animation - collapse back to center */
+.ink-effect-btn:not(:hover) .ink-blob-1 {
+  transform: translate(-50%, -50%) scale(0);
+  transition-delay: 0.2s;
+}
+
+.ink-effect-btn:not(:hover) .ink-blob-2 {
+  transform: translate(-50%, -50%) scale(0);
+  transition-delay: 0.1s;
+}
+
+.ink-effect-btn:not(:hover) .ink-blob-3 {
+  transform: translate(-50%, -50%) scale(0);
+  transition-delay: 0.1s;
+}
+
+.ink-effect-btn:not(:hover) .ink-effect {
+  opacity: 0;
+  transition-delay: 0.3s;
+}
+
+/* Text and icon color change */
+.ink-effect-btn span,
+.ink-effect-btn svg {
+  position: relative;
+  z-index: 10;
+  transition: color 0.3s ease 0.2s;
+}
+
+.ink-effect-btn:hover span,
+.ink-effect-btn:hover svg {
+  color: white;
+}
+
+/* Special handling for outline buttons */
+.ink-effect-btn[class*="outline"]:hover {
+  border-color: transparent;
+}
+
+/* Special handling for ghost buttons */
+.ink-effect-btn[class*="ghost"]:hover {
+  background-color: transparent;
+}
+
+/* Special handling for white buttons */
+.ink-effect-btn.bg-white .ink-blob-1,
+.ink-effect-btn.bg-white .ink-blob-2,
+.ink-effect-btn.bg-white .ink-blob-3 {
+  background: #1e293b;
+}
+
+.ink-effect-btn.bg-white:hover span,
+.ink-effect-btn.bg-white:hover svg {
+  color: white;
+}
+
+/* Music section frame styling */
+.music-frame {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(51, 65, 85, 0.3) 100%);
+  border: 2px solid rgba(245, 158, 11, 0.2);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(245, 158, 11, 0.1), inset 0 1px 0
+    rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.music-frame::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.3));
+  border-radius: 24px;
+  z-index: -1;
+}
+
+/* Shine Effect */
+.shine-effect {
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shine 0.8s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced Button Styles */
+.listen-now-btn,
+.booking-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.listen-now-btn:hover,
+.booking-btn:hover {
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Handwritten font styling for headings */
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Audio Player Slider Styles */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-track {
+  background: #475569;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #f59e0b;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #fbbf24;
+  transform: scale(1.2);
+}
+
+.slider::-moz-range-track {
+  background: #475569;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+.slider::-moz-range-thumb {
+  background: #f59e0b;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  background: #fbbf24;
+  transform: scale(1.2);
+}
+
+/* Success Popup Animation */
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Improved Typography */
+p,
+span,
+div {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Make buttons more accessible */
+button {
+  min-height: 48px;
+  font-size: 18px;
+}
+
+/* Form inputs larger for better usability */
+input {
+  font-size: 18px;
+  min-height: 48px;
+}
+
+/* Better text contrast and readability */
+.text-slate-300 {
+  color: #e2e8f0;
+}
+
+.text-slate-400 {
+  color: #cbd5e1;
+}
+
+/* Ensure all interactive elements are large enough */
+a,
+button,
+input,
+select,
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
